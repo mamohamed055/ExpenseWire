@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="6e454735-6dfb-475f-b5a0-939e7910a2bf" ChangeDateTime="09/12/2022 17:31:39">
+    <Property Name="ElementName" Value="[dbo].[Expense].[description]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Expense]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Description" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="427babbd-3425-42e4-9178-34ccb52a06f6" ChangeDateTime="09/12/2022 17:34:38">
+    <Property Name="ElementName" Value="[dbo].[MileageExpense].[StartMileag]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MileageExpense]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="StartMileage" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ed8927c6-940d-4984-8e86-ca7d102afe03" ChangeDateTime="09/12/2022 17:40:48">
+    <Property Name="ElementName" Value="[dbo].[MileageExpense].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MileageExpense]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ExpenseId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="9d6da869-82ec-498b-b73b-491a94d60e90" ChangeDateTime="09/12/2022 17:45:21">
+    <Property Name="ElementName" Value="[dbo].[MileageExpense].[ExpenseId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MileageExpense]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Id" />
+  </Operation>
+</Operations>

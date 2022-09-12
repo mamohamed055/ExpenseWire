@@ -65,4 +65,12 @@
   <ItemGroup>
     <None Include="PublishLocations\ExpenseWireData.publish.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\User.sql" />
+    <Build Include="dbo\Tables\Expense.sql" />
+    <Build Include="dbo\Tables\MileageExpense.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="ExpenseWireData.refactorlog" />
+  </ItemGroup>
 </Project>
