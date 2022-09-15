@@ -3,6 +3,7 @@ using ExpenseWireDesktopUI.Helpers;
 using ExpenseWireDesktopUI.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Deployment.Internal;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.AccessControl;
@@ -32,7 +33,8 @@ namespace ExpenseWireDesktopUI
             _container.Instance(_container);
 
             _container.Singleton<IWindowManager, WindowManager>()
-                .Singleton<IEventAggregator, EventAggregator>();
+                .Singleton<IEventAggregator, EventAggregator>()
+                .Singleton<IAPIHelper, APIHelper>();
 
             GetType().Assembly.GetTypes()
                 .Where(type => type.IsClass)
