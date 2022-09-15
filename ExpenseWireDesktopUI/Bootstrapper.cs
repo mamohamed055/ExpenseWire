@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using ExpenseWireDesktopUI.Helpers;
 using ExpenseWireDesktopUI.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media.Animation;
 
 namespace ExpenseWireDesktopUI
@@ -18,6 +20,11 @@ namespace ExpenseWireDesktopUI
         public Bootstrapper()
         {
             Initialize();
+
+            ConventionManager.AddElementConvention<PasswordBox>(
+            PasswordBoxHelper.BoundPasswordProperty,
+            "Password",
+            "PasswordChanged");
         }
 
         protected override void Configure()
