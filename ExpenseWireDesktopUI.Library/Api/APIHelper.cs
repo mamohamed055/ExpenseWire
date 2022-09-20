@@ -1,23 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http.Headers;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Configuration;
 using ExpenseWireDesktopUI.Models;
+using ExpenseWireDesktopUI.Library.Models;
 
-namespace ExpenseWireDesktopUI.Helpers
+namespace ExpenseWireDesktopUI.Library.Api
 {
     public class APIHelper : IAPIHelper
     {
         private HttpClient apiClient;
+        private ILoggedInUserModel _loggedInUserModel;
 
-        public APIHelper()
+        public APIHelper(ILoggedInUserModel loggedInUserModel)
         {
             InitializeClient();
+            _loggedInUserModel = loggedInUserModel;
         }
 
         private void InitializeClient()
@@ -54,5 +55,31 @@ namespace ExpenseWireDesktopUI.Helpers
             }
 
         }
+
+        public async Task GetLoggedInUserInfo(string token)
+        {
+            apiClient.DefaultRequestHeaders.Clear();
+            apiClient.DefaultRequestHeaders.Accept.Clear();
+            apiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            apiClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+
+            using (HttpResponseMessage response = await apiClient.GetAsync("/api/User"))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    var result = await response.Content.ReadAsAsync<LoggedInUserModel>();
+                    _loggedInUserModel.CreatedDate = result.CreatedDate;
+                    _loggedInUserModel.Id = result.Id;
+                    _loggedInUserModel.FirstName = result.FirstName;
+                    _loggedInUserModel.LastName = result.LastName;
+                    _loggedInUserModel.Token = result.Token;
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+            }
+        }
+
     }
 }

@@ -1,5 +1,7 @@
 ﻿using Caliburn.Micro;
 using ExpenseWireDesktopUI.Helpers;
+using ExpenseWireDesktopUI.Library.Api;
+using ExpenseWireDesktopUI.Library.Models;
 using ExpenseWireDesktopUI.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -34,6 +36,7 @@ namespace ExpenseWireDesktopUI
 
             _container.Singleton<IWindowManager, WindowManager>()
                 .Singleton<IEventAggregator, EventAggregator>()
+                .Singleton<ILoggedInUserModel, LoggedInUserModel>()
                 .Singleton<IAPIHelper, APIHelper>();
 
             GetType().Assembly.GetTypes()
