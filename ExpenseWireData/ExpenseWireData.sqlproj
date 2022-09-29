@@ -70,5 +70,6 @@
     <Build Include="dbo\Tables\Expense.sql" />
     <Build Include="dbo\Tables\MileageExpense.sql" />
     <Build Include="dbo\Stored Procedures\spUserLookup.sql" />
+    <Build Include="dbo\Stored Procedures\spAddExpense.sql" />
   </ItemGroup>
 </Project>

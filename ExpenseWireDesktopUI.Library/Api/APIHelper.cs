@@ -15,6 +15,10 @@ namespace ExpenseWireDesktopUI.Library.Api
         private HttpClient apiClient;
         private ILoggedInUserModel _loggedInUserModel;
 
+        public HttpClient ApiClient
+        {
+            get { return apiClient; }
+        }
         public APIHelper(ILoggedInUserModel loggedInUserModel)
         {
             InitializeClient();
