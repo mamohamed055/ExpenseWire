@@ -27,7 +27,13 @@
         <Button x:Name="NewExpense" Grid.Column="3" Grid.Row="1" >
             Create New Expense
         </Button>
-        
+        <ListBox x:Name="Expenses" Grid.Row="2" Grid.Column="2" MinHeight="200" MinWidth="150">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding DisplayText}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
 
     </Grid>

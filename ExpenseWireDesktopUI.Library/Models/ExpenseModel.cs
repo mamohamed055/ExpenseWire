@@ -11,5 +11,12 @@ namespace ExpenseWireDesktopUI.Library.Models
         public string Type { get; set; }
         public string Description { get; set; }
         public decimal Amount { get; set; }
+        public string DisplayText
+        {
+            get
+            {
+                return $"{Type} {Description} {Amount.ToString()}";
+            }
+        }
     }
 }

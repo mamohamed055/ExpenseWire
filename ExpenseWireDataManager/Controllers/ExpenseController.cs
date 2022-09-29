@@ -11,6 +11,11 @@ namespace ExpenseWireDataManager.Controllers
     [Authorize]
     public class ExpenseController : ApiController
     {
+        public List<ExpenseModel> Get()
+        {
+            ExpenseData data = new ExpenseData();
+            return data.GetExpenses();
+        }
         public void Post(ExpenseModel item)
         {
             ExpenseData data = new ExpenseData();
