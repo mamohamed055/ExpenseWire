@@ -1,4 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[spAddExpense]
+	@UserId nvarchar(128),
 	@Type nvarchar(50),
 	@Description nvarchar(512),
 	@Amount money
@@ -8,8 +9,8 @@
 
 	SET NOCOUNT ON;
 
-	INSERT INTO dbo.Expense(Type, Description, Amount)
-	VALUES (@Type, @Description, @Amount);
+	INSERT INTO dbo.Expense(Type, Description, Amount, UserId)
+	VALUES (@Type, @Description, @Amount, @UserId);
 
 	END
 

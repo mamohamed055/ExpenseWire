@@ -1,5 +1,6 @@
 ﻿using ExpenseWireDataManager.Library.DataAccess;
 using ExpenseWireDataManager.Library.Models;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,8 +19,18 @@ namespace ExpenseWireDataManager.Controllers
         }
         public void Post(ExpenseModel item)
         {
+            string userId = RequestContext.Principal.Identity.GetUserId();
+
             ExpenseData data = new ExpenseData();
+            item.UserId = userId;
             data.SaveExpense(item);
+        }
+        [Route("api/Expense/GetById")]
+        public List<ExpenseModel> GetById()
+        {
+            ExpenseData data = new ExpenseData();
+            string userId = RequestContext.Principal.Identity.GetUserId();
+            return data.GetExpensesById(userId);
         }
     }
 }

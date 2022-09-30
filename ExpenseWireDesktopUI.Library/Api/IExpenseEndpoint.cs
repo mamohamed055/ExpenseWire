@@ -8,5 +8,6 @@ namespace ExpenseWireDesktopUI.Library.Api
     {
         Task PostExpense(ExpenseModel expense);
         Task<List<ExpenseModel>> GetAll();
+        Task<List<ExpenseModel>> GetById();
     }
 }

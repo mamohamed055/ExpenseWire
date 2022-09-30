@@ -47,5 +47,23 @@ namespace ExpenseWireDesktopUI.Library.Api
                 }
             }
         }
+
+        public async Task<List<ExpenseModel>> GetById()
+        {
+            using (HttpResponseMessage response = await _apiHelper.ApiClient.GetAsync("api/Expense/GetById"))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    var result = await response.Content.ReadAsAsync<List<ExpenseModel>>();
+                    return result;
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+            }
+        }
+
+
     }
 }

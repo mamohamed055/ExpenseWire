@@ -72,5 +72,6 @@
     <Build Include="dbo\Stored Procedures\spUserLookup.sql" />
     <Build Include="dbo\Stored Procedures\spAddExpense.sql" />
     <Build Include="dbo\Stored Procedures\spExpenseGetAll.sql" />
+    <Build Include="dbo\Stored Procedures\spExpenseGetById.sql" />
   </ItemGroup>
 </Project>

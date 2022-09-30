@@ -32,7 +32,7 @@ namespace ExpenseWireDesktopUI.ViewModels
 
         public async Task LoadExpenses()
         {
-            var expenseList = await _expenseEndpoint.GetAll();
+            var expenseList = await _expenseEndpoint.GetById();
             Expenses = new BindingList<ExpenseModel>(expenseList);
         }
 
