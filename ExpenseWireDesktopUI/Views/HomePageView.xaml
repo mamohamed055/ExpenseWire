@@ -7,34 +7,67 @@
              mc:Ignorable="d" 
              Background="WhiteSmoke"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-        <!-- Create an expense row -->
-        <Button x:Name="NewExpense" Grid.Column="3" Grid.Row="1" >
-            Create New Expense
-        </Button>
-        <ListBox x:Name="Expenses" Grid.Row="2" Grid.Column="2" MinHeight="200" MinWidth="150">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="2*"/> <!--Setting to auto won't view the scrollbar-->
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Create an expense row -->
+            <TextBlock Grid.Row="1" Grid.Column="1" Margin="0 0 5 20">
+            Expense Type:
+            </TextBlock>
+            <TextBox x:Name="Type" Grid.Row="1" Grid.Column="2" MinWidth="350" Margin="0 0 0 10" />
+
+            <TextBlock Grid.Row="2" Grid.Column="1" Margin="0 0 5 20">
+            Description:
+            </TextBlock>
+            <TextBox x:Name="Description" Grid.Row="2" Grid.Column="2" MinWidth="350" Margin="0 0 0 10" />
+
+            <TextBlock Grid.Row="3" Grid.Column="1" Margin="0 0 5 20">
+            Amount:
+            </TextBlock>
+            <TextBox x:Name="Amount" Grid.Row="3" Grid.Column="2" MinWidth="350" Margin="0 0 0 10" />
+
+            <Button Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Padding="20 5" HorizontalAlignment="Center" x:Name="Submit">
+                Submit
+            </Button>
+        <ListBox 
+            x:Name="Expenses" Grid.Row="5" Grid.Column="2" 
+            MinHeight="200" MinWidth="150"
+            ScrollViewer.VerticalScrollBarVisibility="Visible">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding DisplayText}"/>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-
-
     </Grid>
+
+            
+
+
+    
+        
+
+
+    
 </UserControl>

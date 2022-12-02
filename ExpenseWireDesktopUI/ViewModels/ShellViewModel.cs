@@ -8,18 +8,16 @@ using ExpenseWireDesktopUI.EventModels;
 
 namespace ExpenseWireDesktopUI.ViewModels
 {
-    public class ShellViewModel : Conductor<object>, IHandle<LogOnEvent>, IHandle<NewExpenseEvent>
+    public class ShellViewModel : Conductor<object>, IHandle<LogOnEvent>, IHandle<SubmitExpenseEvent>
     {
         private IEventAggregator _events;
         private HomePageViewModel _homePageVM;
         private SimpleContainer _container;
-        private AddExpenseViewModel _addExpenseVM;
-        public ShellViewModel(IEventAggregator events, HomePageViewModel homePageVM, SimpleContainer container, AddExpenseViewModel addExpenseVM)
+        public ShellViewModel(IEventAggregator events, HomePageViewModel homePageVM, SimpleContainer container)
         {
             _events = events;
             _homePageVM = homePageVM;
             _container = container;
-            _addExpenseVM = addExpenseVM;
             _events.Subscribe( this );
 
             ActivateItem(_container.GetInstance<LoginViewModel>());
@@ -30,9 +28,9 @@ namespace ExpenseWireDesktopUI.ViewModels
             ActivateItem(_homePageVM);
         }
 
-        public void Handle(NewExpenseEvent message)
+        public void Handle(SubmitExpenseEvent message)
         {
-            ActivateItem(_addExpenseVM);
+            ActivateItem(_homePageVM);
         }
     }
 }

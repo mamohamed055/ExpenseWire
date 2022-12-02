@@ -4,6 +4,7 @@ using ExpenseWireDesktopUI.Library.Api;
 using ExpenseWireDesktopUI.Library.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,7 @@ namespace ExpenseWireDesktopUI.ViewModels
     public class HomePageViewModel : Screen
     {
         private IEventAggregator _events;
-        private BindingList<ExpenseModel> _expenses;
+        private ObservableCollection<ExpenseModel> _expenses;
         
         IExpenseEndpoint _expenseEndpoint;
 
@@ -32,11 +33,13 @@ namespace ExpenseWireDesktopUI.ViewModels
 
         public async Task LoadExpenses()
         {
+            
             var expenseList = await _expenseEndpoint.GetById();
-            Expenses = new BindingList<ExpenseModel>(expenseList);
+            Expenses = new ObservableCollection<ExpenseModel>(expenseList);
+
         }
 
-        public BindingList<ExpenseModel> Expenses 
+        public ObservableCollection<ExpenseModel> Expenses 
         {
             get
             {
@@ -50,10 +53,25 @@ namespace ExpenseWireDesktopUI.ViewModels
                 NotifyOfPropertyChange(() => Expenses);
             }
         }
+        public string Description { get; set; }
 
-        public void NewExpense()
+        public string Type { get; set; }
+
+        public decimal Amount { get; set; }
+
+        public async void Submit()
         {
-            _events.PublishOnUIThread(new NewExpenseEvent());
+            ExpenseModel expense = new ExpenseModel();
+
+            expense.Description = Description;
+            expense.Type = Type;
+            expense.Amount = Amount;
+
+            await _expenseEndpoint.PostExpense(expense);
+            await LoadExpenses();
+            _events.PublishOnUIThread(new SubmitExpenseEvent());
         }
+
+
     }
 }
