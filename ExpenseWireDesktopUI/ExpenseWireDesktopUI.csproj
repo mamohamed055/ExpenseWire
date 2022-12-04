@@ -84,6 +84,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="EventModels\DeleteExpenseEvent.cs" />
+    <Compile Include="EventModels\EditExpenseEvent.cs" />
     <Compile Include="EventModels\LogOnEvent.cs" />
     <Compile Include="EventModels\NewExpenseEvent.cs" />
     <Compile Include="EventModels\SubmitExpenseEvent.cs" />

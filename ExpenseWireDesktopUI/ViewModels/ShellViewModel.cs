@@ -32,5 +32,15 @@ namespace ExpenseWireDesktopUI.ViewModels
         {
             ActivateItem(_homePageVM);
         }
+
+        public void Handle(EditExpenseEvent message)
+        {
+            ActivateItem(_homePageVM);
+        }
+
+        public void Handle(DeleteExpenseEvent message)
+        {
+            ActivateItem(_homePageVM);
+        }
     }
 }

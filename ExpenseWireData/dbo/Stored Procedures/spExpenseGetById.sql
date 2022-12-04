@@ -4,7 +4,7 @@ AS
 BEGIN
 	SET NOCOUNT ON;
 
-	SELECT [UserId], [Type], [Description], [Amount]
+	SELECT [Id], [UserId],[CreatedDate], [Type], [Description], [Amount]
 	FROM dbo.Expense
 	WHERE [UserId] = @Id;
 END

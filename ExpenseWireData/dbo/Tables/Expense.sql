@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Expense]
 (
-	-- [Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
     [CreatedDate] DATETIME2 NOT NULL DEFAULT getutcdate(), 
     [Type] NVARCHAR(50) NOT NULL, 
     [Description] NVARCHAR(512) NOT NULL, 

@@ -73,6 +73,7 @@
     <Build Include="dbo\Stored Procedures\spAddExpense.sql" />
     <Build Include="dbo\Stored Procedures\spExpenseGetAll.sql" />
     <Build Include="dbo\Stored Procedures\spExpenseGetById.sql" />
-    <Build Include="dbo\Stored Procedures\EditExpense.sql" />
+    <Build Include="dbo\Stored Procedures\spEditExpense.sql" />
+    <Build Include="dbo\Stored Procedures\spDeleteExpense.sql" />
   </ItemGroup>
 </Project>

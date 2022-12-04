@@ -25,6 +25,27 @@ namespace ExpenseWireDataManager.Controllers
             item.UserId = userId;
             data.SaveExpense(item);
         }
+
+        [Route("api/Expense/SaveEditedExpense")]
+        public void PostEditedExpense(ExpenseModel item)
+        {
+            string userId = RequestContext.Principal.Identity.GetUserId();
+
+            ExpenseData data = new ExpenseData();
+            item.UserId = userId;
+            data.SaveEditedExpense(item);
+        }
+
+        [HttpDelete]
+
+        [Route("api/Expense/DeleteExpense/{id}")]
+
+        public void DeleteExpense(Int32 id)
+        {
+            ExpenseData data = new ExpenseData();
+            data.DeleteExpense(id);
+        }
+
         [Route("api/Expense/GetById")]
         public List<ExpenseModel> GetById()
         {

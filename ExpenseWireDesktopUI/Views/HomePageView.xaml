@@ -50,10 +50,19 @@
             <Button Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Padding="20 5" HorizontalAlignment="Center" x:Name="Submit">
                 Submit
             </Button>
+
+        <Button Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Padding="20 5" HorizontalAlignment="Center" x:Name="Edit">
+            Edit
+        </Button>
+            
+        <Button Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2" Padding="20 5" HorizontalAlignment="Center" x:Name="Delete">
+            Delete
+        </Button>
         <ListBox 
             x:Name="Expenses" Grid.Row="5" Grid.Column="2" 
             MinHeight="200" MinWidth="150"
-            ScrollViewer.VerticalScrollBarVisibility="Visible">
+            ScrollViewer.VerticalScrollBarVisibility="Visible"
+            SelectedItem="{Binding SelectedExpense}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding DisplayText}"/>

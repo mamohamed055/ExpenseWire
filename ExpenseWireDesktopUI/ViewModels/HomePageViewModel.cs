@@ -53,11 +53,27 @@ namespace ExpenseWireDesktopUI.ViewModels
                 NotifyOfPropertyChange(() => Expenses);
             }
         }
+        
         public string Description { get; set; }
 
         public string Type { get; set; }
-
         public decimal Amount { get; set; }
+
+
+        private ExpenseModel _selectedExpense;
+
+        public ExpenseModel SelectedExpense {
+            get
+            {
+                return _selectedExpense;
+            }
+            set
+            {
+                _selectedExpense = value;
+                NotifyOfPropertyChange(() => SelectedExpense);
+
+            }
+        }
 
         public async void Submit()
         {
@@ -72,6 +88,61 @@ namespace ExpenseWireDesktopUI.ViewModels
             _events.PublishOnUIThread(new SubmitExpenseEvent());
         }
 
+        //CanEdit is before the Edit function
+        /*
+        public bool CanEdit
+        {
+            get
+            {
+                bool output = false;
+
+                if (this.SelectedExpense?.Description != null && this.SelectedExpense?.Type != null && this.SelectedExpense?.Amount > 0)
+                {
+                    output = true;
+                }
+
+                return output;
+            }
+        }
+        */
+
+        public async void Edit()
+        {
+            SelectedExpense.Amount = Amount;
+            SelectedExpense.Type = Type;
+            SelectedExpense.Description = Description;
+
+            await _expenseEndpoint.PostEditedExpense(SelectedExpense);
+            await LoadExpenses();
+            _events.PublishOnUIThread(new EditExpenseEvent());
+        }
+
+        public async void Delete()
+        {
+            Int32 id;
+            id = SelectedExpense.Id;
+
+            await _expenseEndpoint.DeleteExpense(id);
+            await LoadExpenses();
+            _events.PublishOnUIThread(new DeleteExpenseEvent());
+        }
+
+        /*
+        public bool CanSubmit
+        {
+            get
+            {
+                bool output = false;
+
+                if (Description?.Length > 0 && Type?.Length > 0 && Amount> 0)
+                {
+                    output = true;
+                }
+
+                return output;
+            }
+        }
+        */
 
     }
 }

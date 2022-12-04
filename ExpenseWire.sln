@@ -10,6 +10,7 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpenseWireDesktopUI", "ExpenseWireDesktopUI\ExpenseWireDesktopUI.csproj", "{FBAD850A-7881-4142-BB72-9FAE5F5DF4C3}"
 	ProjectSection(ProjectDependencies) = postProject
 		{238AB4C7-02EC-4EC8-A9C7-8FD39CD6DE88} = {238AB4C7-02EC-4EC8-A9C7-8FD39CD6DE88}
+		{57C97A66-7093-43D7-9111-867F763C0F65} = {57C97A66-7093-43D7-9111-867F763C0F65}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpenseWireDataManager.Library", "ExpenseWireDataManager.Library\ExpenseWireDataManager.Library.csproj", "{57C97A66-7093-43D7-9111-867F763C0F65}"

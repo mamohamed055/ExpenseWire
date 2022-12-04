@@ -17,6 +17,18 @@ namespace ExpenseWireDataManager.Library.DataAccess
             sql.SaveData("dbo.spAddExpense", item, "ExpenseWireData");
         }
 
+        public void SaveEditedExpense(ExpenseModel item)
+        {
+            SqlDataAccess sql = new SqlDataAccess();
+            sql.SaveData("dbo.spEditExpense", item, "ExpenseWireData");
+        }
+        public void DeleteExpense(int id)
+        {
+            SqlDataAccess sql = new SqlDataAccess();
+            var p = new {Id = id};
+            sql.DeleteData("dbo.spDeleteExpense", p , "ExpenseWireData");
+        }
+
         public List<ExpenseModel> GetExpenses()
         {
             SqlDataAccess sql = new SqlDataAccess();

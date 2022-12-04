@@ -3,6 +3,6 @@ AS
 	BEGIN 
 		SET NOCOUNT ON;
 
-		SELECT [Type], [Description], [Amount]
+		SELECT [Id], [UserId], [CreatedDate],[Type], [Description], [Amount]
 		FROM dbo.Expense
 	END

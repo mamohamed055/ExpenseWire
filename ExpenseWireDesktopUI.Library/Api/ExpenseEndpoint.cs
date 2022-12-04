@@ -32,6 +32,36 @@ namespace ExpenseWireDesktopUI.Library.Api
             }
         }
 
+        public async Task PostEditedExpense(ExpenseModel expense)
+        {
+            using (HttpResponseMessage response = await _apiHelper.ApiClient.PostAsJsonAsync("api/Expense/SaveEditedExpense", expense))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+            }
+        }
+
+        public async Task DeleteExpense(Int32 id)
+        {
+            using (HttpResponseMessage response = await _apiHelper.ApiClient.DeleteAsync("/api/Expense/DeleteExpense/" + Convert.ToString(id)))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+
+            }
+        }
+
         public async Task<List<ExpenseModel>> GetAll()
         {
             using (HttpResponseMessage response = await _apiHelper.ApiClient.GetAsync("/api/Expense"))
