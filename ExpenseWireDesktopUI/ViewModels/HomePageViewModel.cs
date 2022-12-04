@@ -53,11 +53,14 @@ namespace ExpenseWireDesktopUI.ViewModels
                 NotifyOfPropertyChange(() => Expenses);
             }
         }
-        
-        public string Description { get; set; }
 
-        public string Type { get; set; }
-        public decimal Amount { get; set; }
+        private string _description;
+        private string _type;
+        private decimal _amount;
+        public string Description { get { return _description; } set { _description = value; NotifyOfPropertyChange(() => Description); NotifyOfPropertyChange(() => CanSubmit); NotifyOfPropertyChange(() => CanEdit); } }
+
+        public string Type { get { return _type; } set { _type = value; NotifyOfPropertyChange(() => Type); NotifyOfPropertyChange(() => CanSubmit); NotifyOfPropertyChange(() => CanEdit); } }
+        public decimal Amount { get { return _amount; } set { _amount = value; NotifyOfPropertyChange(() => Amount); NotifyOfPropertyChange(() => CanSubmit); NotifyOfPropertyChange(() => CanEdit); } }
 
 
         private ExpenseModel _selectedExpense;
@@ -71,6 +74,8 @@ namespace ExpenseWireDesktopUI.ViewModels
             {
                 _selectedExpense = value;
                 NotifyOfPropertyChange(() => SelectedExpense);
+                NotifyOfPropertyChange(() => CanEdit);
+                NotifyOfPropertyChange(() => CanDelete);
 
             }
         }
@@ -88,15 +93,13 @@ namespace ExpenseWireDesktopUI.ViewModels
             _events.PublishOnUIThread(new SubmitExpenseEvent());
         }
 
-        //CanEdit is before the Edit function
-        /*
         public bool CanEdit
         {
             get
             {
                 bool output = false;
 
-                if (this.SelectedExpense?.Description != null && this.SelectedExpense?.Type != null && this.SelectedExpense?.Amount > 0)
+                if (SelectedExpense?.Id > 0 && Description?.Length > 0 && Type?.Length > 0 && Amount > 0)
                 {
                     output = true;
                 }
@@ -104,7 +107,6 @@ namespace ExpenseWireDesktopUI.ViewModels
                 return output;
             }
         }
-        */
 
         public async void Edit()
         {
@@ -127,14 +129,29 @@ namespace ExpenseWireDesktopUI.ViewModels
             _events.PublishOnUIThread(new DeleteExpenseEvent());
         }
 
-        /*
+        public bool CanDelete
+        {
+            get
+            {
+                bool output = false;
+
+                if (SelectedExpense?.Id > 0)
+                {
+                    output = true;
+                }
+
+                return output;
+            }
+            
+
+        }
         public bool CanSubmit
         {
             get
             {
                 bool output = false;
 
-                if (Description?.Length > 0 && Type?.Length > 0 && Amount> 0)
+                if (Description?.Length > 0 && Type?.Length > 0 && Amount > 0)
                 {
                     output = true;
                 }
@@ -142,7 +159,7 @@ namespace ExpenseWireDesktopUI.ViewModels
                 return output;
             }
         }
-        */
+       
 
     }
 }
